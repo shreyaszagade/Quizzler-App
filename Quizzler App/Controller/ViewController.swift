@@ -10,6 +10,11 @@ import UIKit
 
 class ViewController: UIViewController {
 
+    let allQuestions = QuestionBank()
+    var pickedAnswer = false
+    var currentQuestionNumber = 0
+    var score = 0
+    
     @IBOutlet weak var questionLabel: UILabel!
     @IBOutlet weak var progressBarView: UIView!
     @IBOutlet weak var progressLabel: UILabel!
@@ -18,6 +23,7 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
+        updateUI()
     }
 
     override func didReceiveMemoryWarning() {
@@ -26,6 +32,57 @@ class ViewController: UIViewController {
     }
 
     @IBAction func answerPressed(_ sender: UIButton) {
+        
+        if sender.tag == 1 {
+            pickedAnswer = true
+        }else{
+            pickedAnswer = false
+        }
+        checkAnswer()
+        nextQuestion()
+    }
+    
+    func checkAnswer(){
+        if pickedAnswer == allQuestions.list[currentQuestionNumber].correctAnswer{
+            score += 1
+            print("correct")
+        }else{
+            print("wrong")
+        }
+    }
+    
+    func updateUI(){
+        questionLabel.text = allQuestions.list[currentQuestionNumber].questionText
+        updateProgress()
+    }
+    
+    func nextQuestion(){
+        if currentQuestionNumber < allQuestions.list.count - 1  {
+            currentQuestionNumber += 1
+            updateUI()
+        }else{
+            let alert = UIAlertController(title: "Awesome", message: "You have completed the quiz. Do you want to start over?", preferredStyle: .alert)
+            let restartAction = UIAlertAction(title: "Restart Quiz", style: .default, handler: { (UIAlertAction) in
+                self.startOver()
+            })
+            alert.addAction(restartAction)
+            present(alert, animated: true, completion: nil)
+        }
+    }
+    
+    func startOver(){
+        currentQuestionNumber = 0
+        score = 0
+        updateUI()
+    }
+    
+    func updateProgress(){
+        scoreLabel.text = "Score: \(score)"
+        progressLabel.text = "\(currentQuestionNumber+1) / \(allQuestions.list.count)"
+        
+        progressBarView.frame.size.width = ((view.frame.size.width / 13) * CGFloat(currentQuestionNumber + 1) )
+        
+        print(progressBarView.frame.size.width)
     }
     
 }
