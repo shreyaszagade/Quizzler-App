@@ -54,14 +54,46 @@
 		7876FFEE20549BAC009F3C7D /* Quizzler App */ = {
 			isa = PBXGroup;
 			children = (
-				7876FFEF20549BAC009F3C7D /* AppDelegate.swift */,
-				7876FFF120549BAC009F3C7D /* ViewController.swift */,
+				7883753C2055722D00D16A5C /* Controller */,
+				7883753B2055722700D16A5C /* View */,
+				7883753A2055721300D16A5C /* Model */,
+				7883753D2055725400D16A5C /* Supporting Files */,
+			);
+			path = "Quizzler App";
+			sourceTree = "<group>";
+		};
+		7883753A2055721300D16A5C /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		7883753B2055722700D16A5C /* View */ = {
+			isa = PBXGroup;
+			children = (
 				7876FFF320549BAC009F3C7D /* Main.storyboard */,
 				7876FFF620549BAC009F3C7D /* Assets.xcassets */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		7883753C2055722D00D16A5C /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				7876FFEF20549BAC009F3C7D /* AppDelegate.swift */,
+				7876FFF120549BAC009F3C7D /* ViewController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		7883753D2055725400D16A5C /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
 				7876FFF820549BAC009F3C7D /* LaunchScreen.storyboard */,
 				7876FFFB20549BAC009F3C7D /* Info.plist */,
 			);
-			path = "Quizzler App";
+			path = "Supporting Files";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
