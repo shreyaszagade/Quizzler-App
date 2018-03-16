@@ -45,9 +45,9 @@ class ViewController: UIViewController {
     func checkAnswer(){
         if pickedAnswer == allQuestions.list[currentQuestionNumber].correctAnswer{
             score += 1
-            print("correct")
+            ProgressHUD.showSuccess("Your Answer is Correct")
         }else{
-            print("wrong")
+            ProgressHUD.showError("Your Answer is Wrong")
         }
     }
     
